@@ -5,7 +5,7 @@ namespace C_Sharp_Project.Services
     internal class Menu
     {
 
-        private List<IPerson> persons = new List<IPerson>();
+        private List<Person> persons = new List<Person>();
         private FileService file = new FileService();
 
         public string FilePath { get; set; } = null!;
@@ -34,24 +34,43 @@ namespace C_Sharp_Project.Services
             Console.Clear();
             Console.WriteLine("Skapa en ny kontakt");
 
-            IPerson person = new Person();
-            Console.Write("Ange Förnamn:");
+            Person person = new Person();
+            Console.Write("Ange Förnamn: ");
             person.FirstName = Console.ReadLine() ?? null!;
-            Console.Write("Ange Efternamn:");
+            Console.Write("Ange Efternamn: ");
             person.LastName = Console.ReadLine() ?? null!;
-            Console.Write("Ange E-post:");
+            Console.Write("Ange E-post: ");
             person.Email = Console.ReadLine() ?? null!;
-            Console.Write("Ange Telefonnummer:");
+            Console.Write("Ange Telefonnummer: ");
             person.PhoneNumber = Console.ReadLine() ?? null!;
-            Console.Write("Ange Adress");
+            Console.Write("Ange Adress: ");
             person.Adress = Console.ReadLine() ?? null!;
 
             persons.Add(person);
-            file.SaveToFile(FilePath, JsonConvert.SerializeObject(new { persons }));
+            file.SaveToFile(FilePath, JsonConvert.SerializeObject(persons));
         }
 
         private void ShowAllContacts()
         {
+            Console.Clear();
+            Console.WriteLine("Alla kontakter:");
+            var contacts = JsonConvert.DeserializeObject<List<Person>>(file.ReadFile(FilePath));
+            if(contacts != null)
+            {
+                persons = contacts;
+                foreach (var p in persons)
+                {
+                    Console.WriteLine("\n Förnamn:"+p.FirstName+ " \n Efternamn: "+p.LastName+" \n E-post: "+p.Email+" \n Telefon: "+p.PhoneNumber+" \n Adress: "+p.Adress+"\n\n");
+                }
+
+            } else
+            {
+                Console.Clear();
+                Console.WriteLine("Något gick fel");
+            }
+
+            Console.ReadKey();
+
         }
 
         private void ShowOneContact()
