@@ -15,8 +15,6 @@ namespace C_Sharp_Project
 
         string Adress { get; set; }
 
-        string ShowBasicPerson => $"Namn: {FirstName} {LastName} E-post: {Email}";
-        string ShowDetailedPerson => $"Förnamn: {FirstName} \nEfternamn: {LastName} \nE-post: {Email} \nTelefon: {PhoneNumber} \n Adress: {Adress}";
     }
     internal class Person : IPerson
     {

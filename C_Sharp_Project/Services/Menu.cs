@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Security.Cryptography.X509Certificates;
 
 namespace C_Sharp_Project.Services
 {
@@ -75,10 +76,88 @@ namespace C_Sharp_Project.Services
 
         private void ShowOneContact()
         {
+            /*
+            Console.Clear();
+            Console.WriteLine("Skriv telefonnumret till personen du vill visa");
+            var search = Console.ReadLine();
+            var _person = persons.FirstOrDefault(x => x.PhoneNumber == search);
+            if (_person != null) 
+            {
+                Console.Clear();
+                Console.WriteLine("\n Förnamn:" + _person.FirstName + " \n Efternamn: " + _person.LastName + " \n E-post: " + _person.Email + " \n Telefon: " + _person.PhoneNumber + " \n Adress: " + _person.Adress + "\n\n");
+                Console.ReadKey();
+            } 
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("Hittar ej personen");
+                Console.ReadKey();
+            }
+
+            */
+
+            Console.Clear();
+            Console.WriteLine("Skriv telefonnumret till personen du vill visa");
+            var search = Console.ReadLine();
+            var contacts = JsonConvert.DeserializeObject<List<Person>>(file.ReadFile(FilePath));
+
+            if (contacts != null)
+            {
+                persons = contacts;
+                foreach (var p in persons)
+                {
+                    if (p.PhoneNumber == search)
+                    {
+                        Console.WriteLine("\n Förnamn:" + p.FirstName + " \n Efternamn: " + p.LastName + " \n E-post: " + p.Email + " \n Telefon: " + p.PhoneNumber + " \n Adress: " + p.Adress + "\n\n");
+                        Console.ReadKey();
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Hittar ingen med detta nummer");
+                        Console.ReadKey();
+                    }
+
+                }
+
+            }
+
+
+
         }
 
         private void RemoveContact()
         {
+            Console.Clear();
+            Console.WriteLine("Skriv telefonnumret till personen du vill radera");
+            var search = Console.ReadLine();
+
+            var contacts = JsonConvert.DeserializeObject<List<Person>>(file.ReadFile(FilePath));
+
+            if (contacts != null)
+            {
+                persons = contacts;
+                foreach (var p in persons)
+                {
+
+                    if (p.PhoneNumber == search)
+                    {
+                        persons.Remove(p);
+                        file.SaveToFile(FilePath, JsonConvert.SerializeObject(persons));
+                        break;
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Hittar ingen med detta nummer");
+                        Console.ReadKey();
+                    }
+
+                }
+
+            }
+
+
         }
 
     }
