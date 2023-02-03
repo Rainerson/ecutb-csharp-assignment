@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.Security.Cryptography.X509Certificates;
 
 namespace C_Sharp_Project.Services
 {
@@ -56,15 +55,16 @@ namespace C_Sharp_Project.Services
             Console.Clear();
             Console.WriteLine("Alla kontakter:");
             var contacts = JsonConvert.DeserializeObject<List<Person>>(file.ReadFile(FilePath));
-            if(contacts != null)
+            if (contacts != null)
             {
                 persons = contacts;
                 foreach (var p in persons)
                 {
-                    Console.WriteLine("\n Förnamn:"+p.FirstName+ " \n Efternamn: "+p.LastName+" \n E-post: "+p.Email+" \n Telefon: "+p.PhoneNumber+" \n Adress: "+p.Adress+"\n\n");
+                    Console.WriteLine("\n Förnamn:" + p.FirstName + " \n Efternamn: " + p.LastName + " \n E-post: " + p.Email + " \n Telefon: " + p.PhoneNumber + " \n Adress: " + p.Adress + "\n\n");
                 }
 
-            } else
+            }
+            else
             {
                 Console.Clear();
                 Console.WriteLine("Något gick fel");

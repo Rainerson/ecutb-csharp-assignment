@@ -6,7 +6,8 @@ menu.FilePath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
 
 
 
-while(true) { 
-Console.Clear();
-menu.WecomeMenu();
+while (true)
+{
+    Console.Clear();
+    menu.WecomeMenu();
 }

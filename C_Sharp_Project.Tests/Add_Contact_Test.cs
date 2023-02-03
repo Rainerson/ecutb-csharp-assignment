@@ -1,4 +1,3 @@
-using System;
 
 namespace C_Sharp_Project.Tests
 {
@@ -12,12 +11,12 @@ namespace C_Sharp_Project.Tests
             //arrange
             Person person = new Person();
             List<Person> persons = new List<Person>();
-            
+
             //act
             persons.Add(person);
-            
+
             //assert
             Assert.AreEqual(1, persons.Count);
-    }
+        }
     }
 }

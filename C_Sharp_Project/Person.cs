@@ -1,5 +1,4 @@
 ﻿
-
 namespace C_Sharp_Project
 {
     internal interface IPerson
@@ -7,11 +6,11 @@ namespace C_Sharp_Project
         Guid Id { get; set; }
         string FirstName { get; set; }
 
-        string LastName { get; set; } 
+        string LastName { get; set; }
 
-        string Email { get; set; } 
+        string Email { get; set; }
 
-        string PhoneNumber { get; set; } 
+        string PhoneNumber { get; set; }
 
         string Adress { get; set; }
 
