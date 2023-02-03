@@ -76,25 +76,6 @@ namespace C_Sharp_Project.Services
 
         private void ShowOneContact()
         {
-            /*
-            Console.Clear();
-            Console.WriteLine("Skriv telefonnumret till personen du vill visa");
-            var search = Console.ReadLine();
-            var _person = persons.FirstOrDefault(x => x.PhoneNumber == search);
-            if (_person != null) 
-            {
-                Console.Clear();
-                Console.WriteLine("\n Förnamn:" + _person.FirstName + " \n Efternamn: " + _person.LastName + " \n E-post: " + _person.Email + " \n Telefon: " + _person.PhoneNumber + " \n Adress: " + _person.Adress + "\n\n");
-                Console.ReadKey();
-            } 
-            else
-            {
-                Console.Clear();
-                Console.WriteLine("Hittar ej personen");
-                Console.ReadKey();
-            }
-
-            */
 
             Console.Clear();
             Console.WriteLine("Skriv telefonnumret till personen du vill visa");
@@ -121,7 +102,6 @@ namespace C_Sharp_Project.Services
                 }
 
             }
-
 
 
         }

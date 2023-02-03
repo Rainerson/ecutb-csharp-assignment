@@ -16,7 +16,7 @@ namespace C_Sharp_Project
         string Adress { get; set; }
 
     }
-    internal class Person : IPerson
+    public class Person : IPerson
     {
         public Guid Id { get; set; } = Guid.NewGuid();
         public string FirstName { get; set; } = null!;
